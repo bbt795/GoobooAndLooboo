@@ -29,7 +29,9 @@ public class EndLevel : MonoBehaviour
         goobooDistance = Vector2.Distance(Gooboo.transform.position, this.gameObject.transform.position);
         loobooDistance = Vector2.Distance(Looboo.transform.position, this.gameObject.transform.position);
 
-        if (goobooDistance < 0.2f && loobooDistance < 0.2f)
+        Debug.Log(goobooDistance + " and " + loobooDistance);
+
+        if (goobooDistance < 1f && loobooDistance < 1f)
         {
 
             SceneManager.LoadScene(nextGameScene);
