@@ -29,8 +29,6 @@ public class EndLevel : MonoBehaviour
         goobooDistance = Vector2.Distance(Gooboo.transform.position, this.gameObject.transform.position);
         loobooDistance = Vector2.Distance(Looboo.transform.position, this.gameObject.transform.position);
 
-        Debug.Log(goobooDistance + " and " + loobooDistance);
-
         if (goobooDistance < 1f && loobooDistance < 1f)
         {
 

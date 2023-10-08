@@ -8,6 +8,7 @@ TagManager:
   - LoobooPlatform
   - GoobooPlatform
   - ButtonSolid
+  - GameAudio
   layers:
   - Default
   - TransparentFX
