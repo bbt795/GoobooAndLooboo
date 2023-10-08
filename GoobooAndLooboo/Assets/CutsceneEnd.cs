@@ -27,7 +27,17 @@ public class CutsceneEnd : MonoBehaviour
 
     private void NextScene(VideoPlayer videoPlayer){
 
-        SceneManager.LoadScene(newGameScene);
+        if (newGameScene.Equals("Quit"))
+        {
+
+            Application.Quit();
+
+        } else
+        {
+
+            SceneManager.LoadScene(newGameScene);
+
+        }
 
     }
 }
