@@ -94,7 +94,7 @@ public class Gooboo : MonoBehaviour
             lastJump = false;
             canJump = false;
         }
-        else if (!canJump && myRig.velocity.y <= 0)
+        else if (!canJump && myRig.velocity.y == 0)
         {
             RaycastHit2D check = Physics2D.CircleCast(this.transform.position, .2f, this.transform.up * -1);
             if (check.distance < 0.2f)
