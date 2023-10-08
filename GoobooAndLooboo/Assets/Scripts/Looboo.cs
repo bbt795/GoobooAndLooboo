@@ -105,7 +105,7 @@ public class Looboo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(myRig.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -130,6 +130,12 @@ public class Looboo : MonoBehaviour
                 myAnim.SetInteger("DIR", 1);
 
             }
+        }
+        if(IsGrounded() && !canJump && myRig.velocity.x == 0){
+            myAnim.SetInteger("DIR", 0);
+        }
+        if(myRig.velocity.y <= -0.2f){
+            myAnim.SetInteger("DIR", 3);
         }
 
         //myRig.velocity = transform.forward * speed * lastDirection.y + new Vector3(0, myRig.velocity.y, 0);

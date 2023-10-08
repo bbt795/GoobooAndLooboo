@@ -120,6 +120,12 @@ public class Gooboo : MonoBehaviour
 
             }
         }
+        if((myRig.velocity.y >= -0.02f && myRig.velocity.y <= 0) && !canJump && myRig.velocity.x == 0){
+            myAnim.SetInteger("DIR", 0);
+        }
+        if(myRig.velocity.y <= -0.2f){
+            myAnim.SetInteger("DIR", 3);
+        }
 
 
         //myRig.velocity = transform.forward * speed * new Vector2(0, myRig.velocity.y);
