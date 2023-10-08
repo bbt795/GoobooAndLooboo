@@ -12,6 +12,9 @@ public class Looboo : MonoBehaviour
     public SpriteRenderer otherRenderer;
     public Rigidbody2D myRig;
 
+    private BoxCollider2D coll;
+    [SerializeField] private LayerMask jumpableGround;
+
     public Sprite upSprite;
     public Sprite pressedSprite;
 
@@ -70,10 +73,15 @@ public class Looboo : MonoBehaviour
         }
     }
 
+    private bool IsGrounded(){
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         myAnim = this.GetComponent<Animator>();
+        coll = this.GetComponent<BoxCollider2D>();
         myRenderer = this.GetComponent<SpriteRenderer>();
         myRig = this.GetComponent<Rigidbody2D>();
     }
