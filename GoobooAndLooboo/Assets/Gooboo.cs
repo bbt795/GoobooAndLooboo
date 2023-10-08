@@ -7,7 +7,7 @@ public class Gooboo : MonoBehaviour
 {
     public Animator myAnim;
     public SpriteRenderer myRenderer;
-    public Rigidbody myRig;
+    public Rigidbody2D myRig;
 
     public bool canJump = true;
     public bool lastJump = false;
@@ -48,7 +48,7 @@ public class Gooboo : MonoBehaviour
     {
         myAnim = this.GetComponent<Animator>();
         myRenderer = this.GetComponent<SpriteRenderer>();
-        myRig = this.GetComponent<Rigidbody>();
+        myRig = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -82,11 +82,11 @@ public class Gooboo : MonoBehaviour
         }
 
         //myRig.velocity = transform.forward * speed * lastDirection.y + new Vector3(0, myRig.velocity.y, 0);
-        myRig.velocity = new Vector3(lastDirection.x, 0, lastDirection.y).normalized * speed;
+        myRig.velocity = new Vector2(lastDirection.x, lastDirection.y).normalized * speed;
 
         if (lastJump)
         {
-            myRig.velocity += new Vector3(0, 8, 0);
+            myRig.velocity += new Vector2(0, 8);
             //this is poor practice, it is better to have a parameter/class variable
             //you can change in the editor rather than a random number
             lastJump = false;
