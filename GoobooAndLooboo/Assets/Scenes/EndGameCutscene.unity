@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1367656302}
-  newGameScene: Quit
+  newGameScene: TitleScene
 --- !u!328 &1367656302
 VideoPlayer:
   m_ObjectHideFlags: 0
