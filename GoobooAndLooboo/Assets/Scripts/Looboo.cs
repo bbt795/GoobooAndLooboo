@@ -71,6 +71,7 @@ public class Looboo : MonoBehaviour
             myTarget = GameObject.FindGameObjectWithTag("LoobooPlatform");
             myTarget.GetComponent<Renderer>().enabled=true;
             myTarget.GetComponent<TilemapCollider2D>().enabled=true;
+            GameObject.Find("Gooboo").GetComponent<Gooboo>().solidPressed = true;
             solidPressed = true;
         }
         
