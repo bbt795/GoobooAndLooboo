@@ -56,7 +56,7 @@ public class Looboo : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
 
             if (myRenderer != null)
@@ -69,7 +69,7 @@ public class Looboo : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
 
             if (myRenderer != null)
