@@ -5,9 +5,14 @@ using UnityEngine.InputSystem;
 
 public class Gooboo : MonoBehaviour
 {
+    public GameObject myTarget;
+    public GameObject[] myTargets;
     public Animator myAnim;
     public SpriteRenderer myRenderer;
     public Rigidbody2D myRig;
+
+    public Sprite upSprite;
+    public Sprite pressedSprite;
 
     public bool canJump = true;
     public bool lastJump = false;
@@ -41,6 +46,25 @@ public class Gooboo : MonoBehaviour
             myAnim.SetInteger("DIR", 2);
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.tag == "Button"){
+            other.GetComponent<SpriteRenderer>().sprite = pressedSprite;
+            myTarget = GameObject.FindGameObjectWithTag("GoobooPlatform");
+            myTarget.GetComponent<Renderer>().enabled=true;
+            myTarget.GetComponent<BoxCollider2D>().enabled=true;
+        }
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D other){
+        if(other.tag == "Button"){
+            other.GetComponent<SpriteRenderer>().sprite = upSprite;
+            myTarget = GameObject.FindGameObjectWithTag("GoobooPlatform");
+            myTarget.GetComponent<Renderer>().enabled=false;
+            myTarget.GetComponent<BoxCollider2D>().enabled=false;
+        }
     }
 
     // Start is called before the first frame update
