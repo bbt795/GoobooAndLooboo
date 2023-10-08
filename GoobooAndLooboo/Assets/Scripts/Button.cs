@@ -9,6 +9,7 @@ public class Button : MonoBehaviour
     public Sprite upSprite;
     public Sprite pressedSprite;
     public Rigidbody2D myRig;
+
     // Start is called before the first frame update
     void Start()
     {
