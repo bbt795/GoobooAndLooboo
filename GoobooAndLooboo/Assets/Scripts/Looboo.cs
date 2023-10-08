@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class Looboo : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Looboo : MonoBehaviour
 
     public Sprite upSprite;
     public Sprite pressedSprite;
+    public bool solidPressed = false;
 
     public bool canJump = true;
     public bool lastJump = false;
@@ -55,21 +57,34 @@ public class Looboo : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "Button"){
+        if(other.tag == "Button" && !solidPressed){
             other.GetComponent<SpriteRenderer>().sprite = pressedSprite;
             myTarget = GameObject.FindGameObjectWithTag("LoobooPlatform");
             myTarget.GetComponent<Renderer>().enabled=true;
-            myTarget.GetComponent<BoxCollider2D>().enabled=true;
+            myTarget.GetComponent<TilemapCollider2D>().enabled=true;
+        }
+        else if(other.tag == "ButtonSolid"){
+            other.GetComponent<SpriteRenderer>().sprite = pressedSprite;
+            myTarget = GameObject.FindGameObjectWithTag("GoobooPlatform");
+            myTarget.GetComponent<Renderer>().enabled=true;
+            myTarget.GetComponent<TilemapCollider2D>().enabled=true;
+            myTarget = GameObject.FindGameObjectWithTag("LoobooPlatform");
+            myTarget.GetComponent<Renderer>().enabled=true;
+            myTarget.GetComponent<TilemapCollider2D>().enabled=true;
+            solidPressed = true;
         }
         
     }
 
     private void OnTriggerExit2D(Collider2D other){
-        if(other.tag == "Button"){
+        if(other.tag == "Button" && !solidPressed){
             other.GetComponent<SpriteRenderer>().sprite = upSprite;
             myTarget = GameObject.FindGameObjectWithTag("LoobooPlatform");
             myTarget.GetComponent<Renderer>().enabled=false;
-            myTarget.GetComponent<BoxCollider2D>().enabled=false;
+            myTarget.GetComponent<TilemapCollider2D>().enabled=false;
+        }
+        else if(other.tag == "ButtonSolid"){
+            other.GetComponent<SpriteRenderer>().sprite = upSprite;
         }
     }
 
