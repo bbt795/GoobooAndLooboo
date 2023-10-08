@@ -88,7 +88,7 @@ public class Gooboo : MonoBehaviour
 
         if (lastJump)
         {
-            myRig.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            myRig.AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
             //this is poor practice, it is better to have a parameter/class variable
             //you can change in the editor rather than a random number
             lastJump = false;

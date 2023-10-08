@@ -12,6 +12,8 @@ public class Looboo : MonoBehaviour
     public bool canJump = true;
     public bool lastJump = false;
 
+    public int doubleJump = 0;
+
     public float speed = 5.0f;
     public Vector2 lastDirection;
 
@@ -87,13 +89,17 @@ public class Looboo : MonoBehaviour
 
         if (lastJump)
         {
-            myRig.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            myRig.AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
             //this is poor practice, it is better to have a parameter/class variable
             //you can change in the editor rather than a random number
+            if(doubleJump==1){
+                canJump = false;
+            }
             lastJump = false;
-            canJump = false;
+            doubleJump++;
+            
         }
-        else if (!canJump && myRig.velocity.y == 0)
+        else if (!canJump && myRig.velocity.y == 0 && doubleJump == 2)
         {
             RaycastHit2D check = Physics2D.CircleCast(this.transform.position, .2f, this.transform.up * -1);
             if (check.distance < 0.2f)
@@ -101,6 +107,7 @@ public class Looboo : MonoBehaviour
                 //out means that whatever variable is inputted next to it will be populated by the function it is in
                     canJump = true;
                     myAnim.SetInteger("DIR", 0);
+                    doubleJump = 0;
 
             }
             //^^^ These two if statements are probably the safest way to perform jump checks
